@@ -1,7 +1,8 @@
 import uuid from 'uuid';
-export const addExpense = ({description = '',note = '',amount = 0,createdAt= new Date().getTime() }={}) => ({
+import moment from 'moment';
+export const addExpense = ({description = '',note = '',amount = 0,createdAt=moment() }={}) => ({
     type: 'ADD_EXPENSE',
-    expenses:{
+    expense:{
         id: uuid(),
         description,
         amount,
