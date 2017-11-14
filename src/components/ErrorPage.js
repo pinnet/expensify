@@ -1,7 +1,7 @@
 import React from 'react';
 const ErrorPage = () => (
     <div>
-    Error Page
+    <img src='/images/404.jpg' />
     </div>
 );
 export default ErrorPage;
