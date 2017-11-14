@@ -2,6 +2,8 @@
 
 exports[`should render correctly 1`] = `
 <div>
-  Error Page
+  <img
+    src="/images/404.jpg"
+  />
 </div>
 `;
