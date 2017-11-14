@@ -6,11 +6,15 @@ import { editExpense, removeExpense} from './../actions/expenses';
 export class EditExpense extends React.Component {
     onSubmit = (expense) => {
         this.props.editExpense(this.props.expense.id,expense);
-        this.props.history.push('/');
+        if(this.props.history){
+            this.props.history.push('/');
+        }
     };
     onClick = () => {
         this.props.removeExpense({id:this.props.expense.id});
-        this.props.history.push('/');
+        if(this.props.history){
+            this.props.history.push('/');
+        }
     };
     render(){
         return (
@@ -30,7 +34,7 @@ export class EditExpense extends React.Component {
 const mapStateToProps = (state,props) => ({
     expense: state.expenses.find((expense) => expense.id === props.match.params.id)
 });
-const mapDispatchToProps = (state,props) => ({
+const mapDispatchToProps = (dispatch) => ({
     editExpense:(id,expense) => dispatch(editExpense(id,expense)),
     removeExpense:(data) => dispatch(removeExpense(data))
 });

@@ -6,18 +6,19 @@ import { addExpense } from './../actions/expenses';
 export class CreateExpense extends React.Component {
     onSubmit = (expense) => {
         this.props.addExpense(expense);
-        this.props.history.push('/');
+        if(this.props.history){
+            this.props.history.push('/');
+        }
     };
     render() {
         return (
         <div>
-            <h1>Add Expense</h1>
+            <h3>Add Expense</h3>
             <ExpenseForm onSubmit={this.onSubmit}/>
         </div>
         );
     };
 }
-
 const mapDispatchToProps = (dispatch) =>({   
         addExpense: (expense) => dispatch(addExpense(expense))
 });
