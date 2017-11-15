@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-
 var config = {
     apiKey: "AIzaSyBIViAxds4Fv_9lqqEwWdB34y_3avblaFs",
     authDomain: "expensify-71a42.firebaseapp.com",
@@ -12,4 +11,6 @@ firebase.initializeApp(config);
 
 firebase.database().ref().set({
     name: 'danny'
-})
+}).catch((e) => {
+    console.log(e);
+});
