@@ -1,4 +1,4 @@
-import filtersReducer from './../../reducers/filters';
+import filtersReducer from '../../reducers/filters';
 import moment from 'moment';
 
 it('should return default values for state',() => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme'; 
-import {ExpensesSummary} from './../../components/ExpenseSummary';
-import expenses from './../fixtures/expenses';
+import {ExpensesSummary} from '../../components/ExpenseSummary';
+import expenses from '../fixtures/expenses';
 
 it('should not output jsx if no expense passed',() => {
 

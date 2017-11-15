@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme'; 
 import moment from 'moment';
-import expenses from './../fixtures/expenses';
-import {CreateExpense} from './../../components/CreateExpense';
+import expenses from '../fixtures/expenses';
+import {CreateExpense} from '../../components/CreateExpense';
 
 let addExpense, history, wrapper;
 beforeEach(() => {

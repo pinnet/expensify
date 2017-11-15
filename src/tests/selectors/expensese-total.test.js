@@ -1,5 +1,5 @@
-import getExpensesTotal from './../../selectors/expensese-total';
-import expenses from './../fixtures/expenses';
+import getExpensesTotal from '../../selectors/expensese-total';
+import expenses from '../fixtures/expenses';
 
 it('should return 0 if no expenses',() => {
 

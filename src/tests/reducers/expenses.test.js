@@ -1,5 +1,5 @@
-import expenseReducer from './../../reducers/expenses';
-import expenses from './../fixtures/expenses';
+import expenseReducer from '../../reducers/expenses';
+import expenses from '../fixtures/expenses';
 import moment from 'moment';
 
 it('should return default values for state',() => {

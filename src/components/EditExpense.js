@@ -1,7 +1,7 @@
 import React from 'react';
 import ExpenseForm from './ExpenseForm';
 import { connect } from 'react-redux';
-import { editExpense, removeExpense} from './../actions/expenses';
+import { editExpense, removeExpense} from '../actions/expenses';
 
 export class EditExpense extends React.Component {
     onSubmit = (expense) => {

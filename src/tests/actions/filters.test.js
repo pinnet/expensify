@@ -4,7 +4,7 @@ import {
     sortByDate,
     setStartDate,
     setEndDate
-} from '../../actions/filters';
+} from '.../actions/filters';
 
 import moment from 'moment';
 

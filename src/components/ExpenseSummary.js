@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import numeral from 'numeral';
-import selectExpenses from './../selectors/expenses.js';
-import getExpensesTotal from './../selectors/expensese-total';
+import selectExpenses from '../selectors/expenses.js';
+import getExpensesTotal from '../selectors/expensese-total';
 
 export const ExpensesSummary = (props) => {
     if (props.expenses !== undefined){
