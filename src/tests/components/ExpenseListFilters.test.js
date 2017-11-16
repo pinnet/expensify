@@ -58,8 +58,8 @@ it('should handle Date changes',() => {
 it('should handle date focus change',() => {
     const callendarFocused = "startDate";
   
-    wrapper.find('DateRangePicker').prop('onFocusChange')({callendarFocused});
-    expect(wrapper.state('callendarFocused')).toEqual({callendarFocused});
+    wrapper.find('DateRangePicker').prop('onFocusChange')(callendarFocused);
+    expect(wrapper.state('callendarFocused')).toEqual(callendarFocused);
 })
 
 

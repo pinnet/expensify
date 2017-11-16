@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+import expenses from './../tests/fixtures/firebase.expenses';
 var config = {
     apiKey: "AIzaSyBIViAxds4Fv_9lqqEwWdB34y_3avblaFs",
     authDomain: "expensify-71a42.firebaseapp.com",
@@ -8,9 +9,6 @@ var config = {
     messagingSenderId: "91843540819"
   };
 firebase.initializeApp(config);
+const db = firebase.database();
 
-firebase.database().ref().set({
-    name: 'danny'
-}).catch((e) => {
-    console.log(e);
-});
+export { firebase,db as default };
