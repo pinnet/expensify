@@ -4,7 +4,8 @@ import {
     editExpense,
     removeExpense,
     setExpenses,
-    startSetExpenses
+    startSetExpenses,
+    startRemoveExpense
 } 
 from '../../actions/expenses';
 import deMoment from '../../utils/deMoment'
@@ -100,7 +101,10 @@ it('should setup add expense with defaults to database and store',(done) => {
     }).then((snapshot) =>{
         expect(snapshot.val()).toEqual(expenseData);
         done();     
-    });
+    }).catch((e) => {
+        console.log(e);
+        done();  
+    })
 });
 it('should setup set expense action ',() => {
     const action = setExpenses(expenses);
@@ -127,4 +131,25 @@ it('should fetch the expenses from firebase',(done) => {
 
         done();
     });
-})
+});
+it('should remove the expenses from firebase',(done) => {
+    
+        const store = createMockStore({});
+        const id = expenses[0].id;
+        store.dispatch(startRemoveExpense({id})).then(() => {
+            const actions = store.getActions();
+            expect(actions[0]).toEqual({
+                type:'REMOVE_EXPENSE',
+                id
+            });
+            return db.ref(`expenses/${id}`).once('value');
+        }).then((snapshot) =>{
+            expect(snapshot.val()).toEqual(null);
+            done();  
+           
+        }).catch((e) => {
+            console.log(e);
+            done();  
+        })
+});
+
