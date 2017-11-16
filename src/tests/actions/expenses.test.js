@@ -5,7 +5,8 @@ import {
     removeExpense,
     setExpenses,
     startSetExpenses,
-    startRemoveExpense
+    startRemoveExpense,
+    startEditExpense
 } 
 from '../../actions/expenses';
 import deMoment from '../../utils/deMoment'
@@ -145,11 +146,36 @@ it('should remove the expenses from firebase',(done) => {
             return db.ref(`expenses/${id}`).once('value');
         }).then((snapshot) =>{
             expect(snapshot.val()).toEqual(null);
-            done();  
-           
+            done();            
         }).catch((e) => {
             console.log(e);
             done();  
         })
 });
+it('should update the expenses in firebase',(done) => {
+    const store = createMockStore({});
 
+    const id = expenses[2].id;
+    const updates = {
+        description:'TEST_TEXT',
+        amount:555555,
+        note:'TEST',
+        createdAt:1999999
+      }
+    store.dispatch(startEditExpense(id,updates)).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type:'EDIT_EXPENSE',
+            id,
+            updates
+        });
+        return db.ref(`expenses/${id}`).once('value');
+    })
+    .then((snapshot) =>{
+        expect(snapshot.val()).toEqual(updates);
+        done();            
+    }).catch((e) => {
+        console.log(e);
+        done();  
+    })
+})
