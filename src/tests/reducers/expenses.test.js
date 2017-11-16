@@ -59,3 +59,9 @@ it('should not edit an expense by unknown id',() => {
     });
     expect(result).toEqual(expenses);
 });
+it('should set expenses',() => {
+
+    const result = expenseReducer(expenses,{type:'SET_EXPENSES',expenses});
+
+    expect(result).toEqual(expenses);
+})

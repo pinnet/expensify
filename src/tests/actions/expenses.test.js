@@ -2,8 +2,12 @@ import {
     startAddExpense,
     addExpense,
     editExpense,
-    removeExpense} 
+    removeExpense,
+    setExpenses,
+    startSetExpenses
+} 
 from '../../actions/expenses';
+import deMoment from '../../utils/deMoment'
 import moment from 'moment';
 import expenses from './../fixtures/expenses';
 import configMockStore from 'redux-mock-store';
@@ -11,6 +15,15 @@ import thunk from 'redux-thunk';
 import db from './../../firebase/firebase';
 
 const createMockStore = configMockStore([thunk]);
+
+beforeEach((done) => {
+    const expensesData = {};
+    expenses.forEach(({id,description,note,amount,createdAt}) => {
+        expensesData[id]= {description,note,amount,createdAt: moment(createdAt).valueOf()}
+    });
+
+    db.ref('expenses').set(expensesData).then(() => { done();})
+});
 
 it('Should setup remove expense action object', () => {
     const action = removeExpense({id:'123abcd'});
@@ -89,3 +102,29 @@ it('should setup add expense with defaults to database and store',(done) => {
         done();     
     });
 });
+it('should setup set expense action ',() => {
+    const action = setExpenses(expenses);
+    expect(action).toEqual({
+        type:'SET_EXPENSES',
+        expenses
+    });
+});
+it('should fetch the expenses from firebase',(done) => {
+
+    const store = createMockStore({});
+    const xpns = expenses.map((expense) => {
+        return deMoment(expense);
+    })
+    
+    store.dispatch(startSetExpenses()).then(() => {
+     
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual({
+            type:'SET_EXPENSES',
+            expenses:xpns
+        });
+
+        done();
+    });
+})

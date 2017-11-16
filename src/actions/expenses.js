@@ -27,7 +27,7 @@ export const startAddExpense = (expenseData = {}) => {
         return db.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id:ref.key,
-                ...expense
+                ...expense                
             }));
         });
     };
@@ -44,3 +44,26 @@ export const editExpense = (id,updates) => ({
     updates
 });
 
+export const setExpenses = (expenses) => ({
+  type:'SET_EXPENSES',
+  expenses  
+});
+
+export const startSetExpenses = () => { 
+    return (dispatch) => {
+        return db.ref('expenses')
+        .once('value')
+        .then((snapshot) => {
+          
+            const newStore = [];
+            snapshot.forEach((expense) => {
+                 newStore.push({ 
+                     id:expense.key,
+                     ...expense.val()
+                 })
+              })
+            dispatch(setExpenses(newStore));  
+        })    
+    }
+}
+               
