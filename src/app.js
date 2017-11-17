@@ -47,10 +47,8 @@ firebase.auth().onAuthStateChanged((user) => {
         }); 
     } else {
         store.dispatch(logout())
-            store.dispatch(startSetExpenses()).then(() => {
                 renderApp();
                 history.push('/');
-            });
         };
 
 });   
