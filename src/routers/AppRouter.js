@@ -6,13 +6,14 @@ import CreateExpense from '../components/CreateExpense';
 import EditExpense from '../components/EditExpense';
 import Help from '../components/HelpPage';
 import Login from '../components/Login';
+import { Provider } from 'react-redux';
 
 
 const AppRouter = () => (
     <BrowserRouter>
     <div>
         <Header/>
-        <Switch>
+         <Switch>
             <Route path="/" component={Login} exact={true}/>
             <Route path="/dashboard" component={Dashboard}  />
             <Route path="/create" component={CreateExpense} />

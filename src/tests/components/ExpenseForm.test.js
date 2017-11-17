@@ -17,7 +17,7 @@ it('should render correctly with expenses', () => {
 it('should render error invalid form submission', () => {
     const wrapper = shallow(<ExpenseForm />);
     expect(wrapper).toMatchSnapshot();  
-    wrapper.find('form',).simulate('submit',{preventDefault:() => {}});
+    wrapper.find('form').simulate('submit',{preventDefault:() => {}});
     expect(wrapper.state('error').length).toBeGreaterThan(0);                                                                        
     expect(wrapper).toMatchSnapshot();  
 });
@@ -57,7 +57,7 @@ it('should call onSubmit prop for valid form submission',() => {
    
     const onSubmitSpy = jest.fn();
     const wrapper = shallow(<ExpenseForm expense={expenses[0]} onSubmit={onSubmitSpy} />);
-    wrapper.find('form',).simulate('submit',{preventDefault:() => {}});
+    wrapper.find('form').simulate('submit',{preventDefault:() => {}});
     expect(wrapper.state('error')).toBe('');
     expect(onSubmitSpy).toHaveBeenLastCalledWith({
         description:expenses[0].description,

@@ -3,8 +3,10 @@
 exports[`should render correctly 1`] = `
 <div>
   <p>
-    <button>
-      Login
+    <button
+      onClick={[Function]}
+    >
+      Login via Google
     </button>
   </p>
 </div>

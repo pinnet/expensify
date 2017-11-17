@@ -9,25 +9,21 @@ exports[`should render correctly 1`] = `
     activeClassName="is-active"
     ariaCurrent="true"
     exact={true}
-    to="/dashboard"
+    to="/"
   >
     Dashboard
   </NavLink>
-   | 
   <NavLink
     activeClassName="is-active"
     ariaCurrent="true"
     to="/create"
   >
-    Create New Expense
+    Create Expense
   </NavLink>
-   | 
-  <NavLink
-    activeClassName="is-active"
-    ariaCurrent="true"
-    to="/logout"
+  <button
+    onClick={[Function]}
   >
-    logout
-  </NavLink>
+    Logout
+  </button>
 </header>
 `;
