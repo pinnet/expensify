@@ -18,9 +18,7 @@ export const startAddExpense = (expenseData = {}) => {
             amount = 0,
             createdAt = 0
         } = expenseData;
-
         const expense = deMoment({description,note,amount,createdAt});
-        console.log(expense)
         return db.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id:ref.key,
