@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link, NavLink} from 'react-router-dom';
+import {Router, Route, Switch, Link, NavLink} from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 import Header from '../components/Header';
 import Dashboard from '../components/Dashboard';
 import CreateExpense from '../components/CreateExpense';
@@ -7,10 +8,12 @@ import EditExpense from '../components/EditExpense';
 import Help from '../components/HelpPage';
 import Login from '../components/Login';
 import { Provider } from 'react-redux';
+import createBrowserHistory from 'history/createBrowserHistory';
 
+export const history = createBrowserHistory();
 
 const AppRouter = () => (
-    <BrowserRouter>
+    <Router history={history}>
     <div>
         <Header/>
          <Switch>
@@ -22,7 +25,7 @@ const AppRouter = () => (
             <Route component={Help} />
         </Switch>
     </div>
-    </BrowserRouter>
+    </Router>
     
 )
 
