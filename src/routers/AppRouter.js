@@ -7,22 +7,22 @@ import CreateExpense from '../components/CreateExpense';
 import EditExpense from '../components/EditExpense';
 import Help from '../components/HelpPage';
 import Login from '../components/Login';
+import ErrorPage from '../components/ErrorPage';
 import { Provider } from 'react-redux';
 import createBrowserHistory from 'history/createBrowserHistory';
-
+import PrivateRoute from './PrivateRoute';
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
     <Router history={history}>
     <div>
-        <Header/>
          <Switch>
             <Route path="/" component={Login} exact={true}/>
-            <Route path="/dashboard" component={Dashboard}  />
-            <Route path="/create" component={CreateExpense} />
-            <Route path="/edit/:id" component={EditExpense} />
+            <PrivateRoute path="/dashboard" component={Dashboard}  />
+            <PrivateRoute path="/create" component={CreateExpense} />
+            <PrivateRoute path="/edit/:id" component={EditExpense} />
             <Route path="/help" component={Help} />
-            <Route component={Help} />
+            <Route component={ErrorPage} />
         </Switch>
     </div>
     </Router>
