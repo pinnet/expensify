@@ -1,5 +1,6 @@
 import uuid from 'uuid';
 import moment from 'moment';
+import deMoment from './../utils/deMoment'
 import db from './../firebase/firebase';
 
 
@@ -12,18 +13,14 @@ export const startAddExpense = (expenseData = {}) => {
     return (dispatch) => {
         
         const {
-                description = '',
-                note = '',
-                amount = 0,
-                createdAt = 0
+            description = '',
+            note = '',
+            amount = 0,
+            createdAt = 0
         } = expenseData;
 
-        const expense = { description,
-             note,
-             amount,
-             createdAt: moment(createdAt).valueOf()
-        };
-
+        const expense = deMoment({description,note,amount,createdAt});
+        console.log(expense)
         return db.ref('expenses').push(expense).then((ref) => {
             dispatch(addExpense({
                 id:ref.key,
@@ -51,7 +48,9 @@ export const editExpense = (id,updates) => ({
     id,
     updates
 });
-export const startEditExpense = (id,updates) => {
+export const startEditExpense = (id,updatesObj) => {
+    const updates = deMoment(updatesObj);
+
     return (dispatch) => {
         return db.ref(`expenses/${id}`)
         .update(updates)      

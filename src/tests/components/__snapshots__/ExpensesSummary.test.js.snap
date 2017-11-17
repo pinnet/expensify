@@ -7,8 +7,8 @@ exports[`should not pluralise expense with only one expense 1`] = `
   <p>
     Viewing 
     1
-      expense
-      totaling £
+     expense
+     totaling £
     1.95
     .
   </p>
@@ -20,9 +20,9 @@ exports[`should pluralise expense with more than one expense 1`] = `
   <p>
     Viewing 
     3
-      expense
+     expense
     s
-      totaling £
+     totaling £
     1,141.95
     .
   </p>

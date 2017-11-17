@@ -11,11 +11,8 @@ export const ExpensesSummary = (props) => {
         return(
             <div> 
             {props.expenses.length === 0 ||
-                <p>Viewing {expenseCount}&nbsp; 
-                    expense{expenseCount === 1 || 's'}&nbsp; 
-                    totaling £{numeral(expensesTotal / 100).format('0,0.00')}.
-                </p>
-            }    
+                <p>Viewing {expenseCount} expense{expenseCount === 1 || 's'} totaling £{numeral(expensesTotal / 100).format('0,0.00')}.</p>
+            }
             </div>
         )
     }

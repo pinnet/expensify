@@ -5,7 +5,7 @@ import Dashboard from '../components/Dashboard';
 import CreateExpense from '../components/CreateExpense';
 import EditExpense from '../components/EditExpense';
 import Help from '../components/HelpPage';
-import ErrorPage from '../components/ErrorPage';
+import Login from '../components/Login';
 
 
 const AppRouter = () => (
@@ -13,11 +13,12 @@ const AppRouter = () => (
     <div>
         <Header/>
         <Switch>
-            <Route path="/" component={Dashboard} exact={true}/>
+            <Route path="/" component={Login} exact={true}/>
+            <Route path="/dashboard" component={Dashboard}  />
             <Route path="/create" component={CreateExpense} />
             <Route path="/edit/:id" component={EditExpense} />
             <Route path="/help" component={Help} />
-            <Route component={ErrorPage} />
+            <Route component={Help} />
         </Switch>
     </div>
     </BrowserRouter>
