@@ -3,28 +3,78 @@
 exports[`should not output jsx if no expense passed 1`] = `""`;
 
 exports[`should not pluralise expense with only one expense 1`] = `
-<div>
-  <p>
-    Viewing 
-    1
-     expense
-     totaling £
-    1.95
-    .
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        1
+        ,
+      </span>
+       expense
+       totaling 
+      <span>
+        £
+        1.95
+      </span>
+      .
+    </h1>
+    <div
+      className="page_header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should pluralise expense with more than one expense 1`] = `
-<div>
-  <p>
-    Viewing 
-    3
-     expense
-    s
-     totaling £
-    1,141.95
-    .
-  </p>
+<div
+  className="page-header"
+>
+  <div
+    className="content-container"
+  >
+    <h1
+      className="page-header__title"
+    >
+      Viewing 
+      <span>
+        3
+        ,
+      </span>
+       expense
+      s
+       totaling 
+      <span>
+        £
+        1,141.95
+      </span>
+      .
+    </h1>
+    <div
+      className="page_header__actions"
+    >
+      <Link
+        className="button"
+        replace={false}
+        to="/create"
+      >
+        Add Expense
+      </Link>
+    </div>
+  </div>
 </div>
 `;

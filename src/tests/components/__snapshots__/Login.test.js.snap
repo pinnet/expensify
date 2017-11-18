@@ -1,13 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render correctly 1`] = `
-<div>
-  <p>
+<div
+  className="box-layout"
+>
+  <div
+    className="box-layout__box"
+  >
+    <h1
+      className="box-layout__title"
+    >
+      Expensify
+    </h1>
+    <p>
+      It's time to get Expensified.
+    </p>
     <button
+      className="button"
       onClick={[Function]}
     >
       Login via Google
     </button>
-  </p>
+  </div>
 </div>
 `;
